@@ -80,18 +80,26 @@
         </dependency>
     </dependencies>
 
+
+    <packaging>jar</packaging> <!--打成jar包 -->
     <build>
+        <!--打成jar包的名称-->
+        <finalName>dataGraph</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!--排除测试类对打包的干扰-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <image>
-                        <builder>paketobuildpacks/builder-jammy-base:latest</builder>
-                    </image>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 
 </project>

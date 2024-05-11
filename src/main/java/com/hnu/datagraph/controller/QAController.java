@@ -9,7 +9,7 @@ import com.hnu.datagraph.mapper.RelationMapper;
 import com.hnu.datagraph.service.NlpService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.xddf.usermodel.HasShapeProperties;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("nlp")
+@RequestMapping("/nlp")
 public class QAController {
 
     @Resource
@@ -30,10 +30,12 @@ public class QAController {
     @Resource
     private RelationMapper relationMapper;
 
-    @GetMapping("getAnswer")
+    @GetMapping(value = "/getAnswer", produces = "application/json;charset=UTF-8")
     public R<Answer> getAnswer(@RequestParam String question) {
+        log.info("question:{}", question);
         Answer answer = new Answer();
         List<String> structuredQueryList = nlpService.getStructuredQueryList(question);
+        log.info("structuredQueryList:{}", structuredQueryList.toString());
         if (structuredQueryList.size() <= 1) {
             return R.error("抱歉，未查询到相关信息！");
         } else {

@@ -7,9 +7,7 @@ import org.apache.commons.lang3.tuple.Triple;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,9 +33,9 @@ public class NlpServiceImpl implements NlpService, InitializingBean {
     }
 
     public void loadMarkWordMap() {
-        String filePath = "./data/mark/mark_word.txt";
+        InputStream inputFile= Thread.currentThread().getContextClassLoader().getResourceAsStream("data/mark/mark_word.txt");
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputFile));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
@@ -51,9 +49,9 @@ public class NlpServiceImpl implements NlpService, InitializingBean {
     }
 
     public void loadMarkRelationMap() {
-        String filePath = "./data/mark/mark_relation.txt"; // 替换为你的文件路径
+        InputStream inputFile= Thread.currentThread().getContextClassLoader().getResourceAsStream("data/mark/mark_relation.txt");
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputFile));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ", 2); // 使用 "<" 作为分隔符，最多分成两部分
@@ -73,6 +71,7 @@ public class NlpServiceImpl implements NlpService, InitializingBean {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public List<String> getStructuredQueryList(String sentence) {

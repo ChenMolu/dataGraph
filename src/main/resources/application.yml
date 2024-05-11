@@ -1,11 +1,9 @@
 server:
   port: 8897
 
-#spring:
-#  application:
-#    name: dataGraph
-
 spring:
+  application:
+    name: dataGraph
   datasource:
     url: jdbc:dm://121.43.60.137:52360
     username: SYSDBA
