@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -14,6 +15,6 @@ public class Answer {
 
     private Map<String,String> answer;
 
-    private Graph graph;
+    private List<Point> graph;
 
 }

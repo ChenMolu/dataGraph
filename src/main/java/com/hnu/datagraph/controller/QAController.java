@@ -2,19 +2,19 @@ package com.hnu.datagraph.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hnu.datagraph.common.R;
-import com.hnu.datagraph.entity.Graph;
 import com.hnu.datagraph.entity.Relation;
 import com.hnu.datagraph.entity.vo.Answer;
+import com.hnu.datagraph.entity.vo.Point;
 import com.hnu.datagraph.mapper.RelationMapper;
 import com.hnu.datagraph.service.NlpService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,14 +47,22 @@ public class QAController {
                 return R.error("抱歉，未查询到相关信息！");
             }
             log.info(relations.toString());
-            Map<String, String> res = new HashMap<>(16);
-            Graph graph = new Graph();
-            graph.setNode(entity);
-            Map<String, String> map = new HashMap<>(16);
-            for (Relation relation : relations) {
-                map.put(relation.getRelation(), relation.getObjectItem());
+            List<Point> points = new ArrayList<>();
+            points.add(new Point(0, entity, "", -1));
+            for (int i = 1; i <= relations.size(); i++) {
+                Point point = new Point(i,relations.get(i-1).getObjectItem(),relations.get(i-1).getRelation(),0);
+                points.add(point);
+
             }
-            graph.setRelation(map);
+            answer.setGraph(points);
+            Map<String, String> res = new HashMap<>(16);
+//            Graph graph = new Graph();
+//            graph.setNode(entity);
+//            Map<String, String> map = new HashMap<>(16);
+//            for (Relation relation : relations) {
+//                map.put(relation.getRelation(), relation.getObjectItem());
+//            }
+//            graph.setRelation(map);
             for (int i = 1; i < structuredQueryList.size(); i++) {
 
                 for (Relation relation : relations) {
@@ -64,7 +72,7 @@ public class QAController {
                 }
             }
             answer.setAnswer(res);
-            answer.setGraph(graph);
+//            answer.setGraph(graph);
         }
         return R.success(answer);
     }
