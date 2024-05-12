@@ -8,8 +8,8 @@
         <version>3.0.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.hnu</groupId>
-    <artifactId>dataGraph</artifactId>
+    <groupId>com.jwlz.sjjc.zstp</groupId>
+    <artifactId>jwlz-application-sjjczstp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jwlz-application-sjjczstp</name>
     <description>jwlz-application-sjjczstp</description>
