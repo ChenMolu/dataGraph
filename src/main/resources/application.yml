@@ -36,3 +36,10 @@ spring:
 #    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 #    # 合并多个DruidDataSource的监控数据
 #    useGlobalDataSourceStat: true
+
+
+##gStore高级函数方法名称
+seniorFun: "cycleboolean,cyclepath,shortestpath,shortestpathlen,khopreachable,khopreachablepath,khopenumerate,bfscount,ppr,closenesscentrality,trianglecounting,select(pfn"
+
+##查询超过节点数量后台计算XY坐标
+nodeNum: 2000

@@ -38,9 +38,6 @@ public class StatisticsController {
         log.info(maps.toString());
         for (Map<String, Object> map : maps) {
             String type = (String) map.get("TYPE");
-//            if(type.equals("机构")){
-//                statistics.setInstitutionAmount((Long) map.get("COUNT"));
-//            }else if()
             switch (type) {
                 case "机构":
                     statistics.setInstitutionAmount((Long) map.get("COUNT"));

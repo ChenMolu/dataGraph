@@ -1,4 +1,4 @@
-//package com.hnu.zstp.config;
+//package com.jwlz.sjjc.zstp.config;
 //
 //import com.alibaba.druid.pool.DruidDataSource;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,8 @@
 //            return pool.getConnection();
 //        } catch (SQLException e) {
 //            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
 //        }
 //        return null;
 //    }
