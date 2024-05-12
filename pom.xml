@@ -84,7 +84,7 @@
     <packaging>jar</packaging> <!--打成jar包 -->
     <build>
         <!--打成jar包的名称-->
-        <finalName>dataGraph</finalName>
+        <finalName>jwlz-application-sjjczstp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
