@@ -11,8 +11,8 @@
     <groupId>com.hnu</groupId>
     <artifactId>dataGraph</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dataGraph</name>
-    <description>dataGraph</description>
+    <name>jwlz-application-sjjczstp</name>
+    <description>jwlz-application-sjjczstp</description>
     <properties>
         <java.version>17</java.version>
     </properties>

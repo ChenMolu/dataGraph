@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: dataGraph
+    name: jwlz-application-sjjczstp
   datasource:
     url: jdbc:dm://121.43.60.137:52360
     username: SYSDBA
